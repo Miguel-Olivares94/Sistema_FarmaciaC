@@ -1,0 +1,17 @@
+<!-- templates/farmacia/detalle_venta.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Detalle de Venta</h1>
+  
+  <h2>Venta</h2>
+  <p>Medicamento: {{ venta.medicamento.nombre }}</p>
+  <p>Cantidad: {{ venta.cantidad }}</p>
+  <p>Precio Unitario: {{ venta.precio }}</p>
+  <p>Fecha: {{ venta.fecha }}</p>
+  <p>Vendedor: {{ venta.vendedor.username }}</p>
+
+  <!-- Puedes agregar más detalles según tus necesidades -->
+
+{% endblock %}

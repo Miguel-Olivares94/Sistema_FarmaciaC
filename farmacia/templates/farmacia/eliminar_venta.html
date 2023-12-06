@@ -1,0 +1,17 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Eliminar Venta - Farmacia Collico{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="mt-4 mb-4">Eliminar Venta</h2>
+
+    <p>¿Estás seguro de que deseas eliminar la venta con ID {{ venta.id }}?</p>
+
+    <form method="post" action="{% url 'eliminar_venta' venta.id %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+      <a href="{% url 'ventas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}

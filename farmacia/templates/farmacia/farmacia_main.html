@@ -1,0 +1,14 @@
+{% extends 'farmacia/base_generic.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Bienvenido a Farmacia Collico</h1>
+        <p>Información general:</p>
+        <ul>
+            <li>Total de medicamentos en stock: {{ total_medicamentos }}</li>
+            <li>Cantidad de medicamentos agotados: {{ medicamentos_agotados }}</li>
+            <!-- Puedes agregar más información aquí -->
+        </ul>
+        <a class="btn btn-primary" href="{% url 'medicamento_list' %}">Ver lista de medicamentos</a>
+    </div>
+{% endblock %}

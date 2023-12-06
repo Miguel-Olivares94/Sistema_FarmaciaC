@@ -1,0 +1,45 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Ventas - Farmacia Collico{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="mt-4 mb-4">Ventas</h2>
+
+    {% if ventas %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Monto Total $</th>
+            <th scope="col">Vendedor</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Medicamento</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for venta in ventas %}
+            <tr>
+              <td>{{ venta.id }}</td>
+              <td>{{ venta.fecha }}</td>
+              <td>{{ venta.precio }}</td>
+              <td>{{ venta.vendedor.username }}</td>
+              <td>{{ venta.medicamento.stock }}</td>
+              <td>{{ venta.cantidad }}</td>
+              <td>{{ venta.medicamento.nombre }}</td>
+              <td>
+                <a href="{% url 'eliminar_venta' venta.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                <a href="{% url 'actualizar_venta' venta.id %}" class="btn btn-primary btn-sm">Actualizar</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No hay ventas registradas.</p>
+    {% endif %}
+  </div>
+{% endblock %}

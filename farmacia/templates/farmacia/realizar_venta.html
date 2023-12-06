@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Realizar Venta - Farmacia Collico{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="mt-4 mb-4">Registrar Venta</h2>
+
+    <form method="post" action="{% url 'realizar_venta' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit" class="btn btn-primary">Registar Venta</button>
+    </form>
+
+    {% if form.is_bound and form.is_valid %}
+      <hr>
+      <h4>Registro realizado con éxito</h4>
+      <p>Detalles de la venta:</p>
+      <ul>
+        {% for medicamento_id, cantidad in form.cleaned_data.medicamentos.items %}
+          <li>{{ medicamento_id }} - {{ cantidad }} unidades</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endblock %}
+

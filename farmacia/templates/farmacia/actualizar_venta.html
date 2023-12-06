@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Actualizar Venta - Farmacia Collico{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="mt-4 mb-4">Actualizar Venta</h2>
+
+    <form method="post" action="{% url 'actualizar_venta' venta.id %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Actualizar Venta</button>
+      <a href="{% url 'ventas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}

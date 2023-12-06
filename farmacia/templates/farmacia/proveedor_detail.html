@@ -1,0 +1,17 @@
+<!-- farmacia/templates/farmacia/proveedor_detail.html -->
+{% extends 'farmacia/base_generic.html' %}
+
+{% block content %}
+  <h1>{{ proveedor.nombre }}</h1>
+  <ul class="list-group">
+    <li class="list-group-item">Razón Social: {{ proveedor.razon_social }}</li>
+    <li class="list-group-item">RUT: {{ proveedor.rut }}</li>
+    <li class="list-group-item">Dirección: {{ proveedor.direccion }}</li>
+    <li class="list-group-item">Email: {{ proveedor.email }}</li>
+    <li class="list-group-item">Teléfono: {{ proveedor.fono }}</li>
+    <li class="list-group-item">Productos: {{ proveedor.productos }}</li>
+    <!-- Otros campos del modelo Proveedor -->
+  </ul>
+  <a class="btn btn-warning" href="{% url 'proveedor_update' pk=proveedor.pk %}">Editar</a>
+  <a class="btn btn-danger" href="{% url 'proveedor_delete' pk=proveedor.pk %}">Eliminar</a>
+{% endblock %}
