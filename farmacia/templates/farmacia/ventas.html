@@ -12,7 +12,7 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Fecha</th>
-            <th scope="col">Monto Total $</th>
+            <th scope="col">precio</th>
             <th scope="col">Vendedor</th>
             <th scope="col">Stock</th>
             <th scope="col">Cantidad</th>
@@ -25,7 +25,7 @@
             <tr>
               <td>{{ venta.id }}</td>
               <td>{{ venta.fecha }}</td>
-              <td>{{ venta.precio }}</td>
+              <td>${{ venta.precio}}</td>
               <td>{{ venta.vendedor.username }}</td>
               <td>{{ venta.medicamento.stock }}</td>
               <td>{{ venta.cantidad }}</td>

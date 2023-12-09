@@ -3,6 +3,7 @@ from django.urls import path, include
 from .views import CerrarSesionView
 from .views import ventas,realizar_venta,eliminar_venta, actualizar_venta
 from .views import detalle_venta
+from .views import dashboard
 from .views import (
 
     FarmaciaMainView,
@@ -27,6 +28,7 @@ from .views import (
 urlpatterns = [
     
     path('accounts/', include('django.contrib.auth.urls')),
+    path('dashboard/', dashboard, name='dashboard'),
     path('farmacia_main/', FarmaciaMainView.as_view(), name='farmacia_main'),
     
     path('ventas/', ventas, name='ventas'),

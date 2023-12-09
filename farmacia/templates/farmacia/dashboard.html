@@ -1,0 +1,35 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Panel de Control - Farmacia Collico{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Dashboard</h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Medicamentos</h5>
+            <ul class="list-group">
+              {% for medicamento in medicamentos %}
+                <li class="list-group-item">{{ medicamento.nombre }} - Stock: {{ medicamento.nivel_stock }}  {{ medicamento.stock }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Estadísticas de Ventas</h5>
+            <p class="card-text">Total de Stock Vendido: {{ stock_vendido }}</p>
+            <p class="card-text">Total de Ventas: {{ total_ventas }}</p>
+            <p class="card-text">Monto Total Vendido: ${{ monto_total_vendido }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

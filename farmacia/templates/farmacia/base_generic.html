@@ -36,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'ventas' %}">Ventas</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                </li>
                 <!-- Agrega el enlace a la vista de ventas -->
             </ul>
             
@@ -52,7 +55,8 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+                            <a class="nav-link" href="{% url 'inicio_sesion' %}">Iniciar Sesión</a>
+
                         </li>
                         <!-- Otras opciones para usuarios no autenticados -->
                     {% endif %}

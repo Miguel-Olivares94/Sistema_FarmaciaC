@@ -22,12 +22,16 @@ class Medicamento(models.Model):
     nivel_stock = models.CharField(max_length=255, blank=True, null=True)
     fecha_ingreso = models.DateField()
     fecha_vencimiento = models.DateField()
+  
+    def calcular_precio_total_vendido(self):
+        return sum(detalle.precio_total() for detalle in self.detalleventa_set.all())
+
  
 
     def get_nivel_stock(self):
         if self.stock < 100:
             return 'Bajo'
-        elif 100 <= self.stock < 1000:
+        elif 100 <= self.stock < 700:
             return 'Medio'
         else:
             return 'Alto'
@@ -52,9 +56,11 @@ class DetalleVenta(models.Model):
     medicamento = models.ForeignKey('Medicamento', on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
     precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
+    
 
-    def calcular_subtotal(self):
+    def precio_total(self):
         return self.cantidad * self.precio_unitario
+
 
     def __str__(self):
         return f'Detalle de Venta {self.id}'
