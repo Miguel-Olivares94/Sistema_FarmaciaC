@@ -1,29 +1,34 @@
-<!-- farmacia/templates/farmacia/medicamento_list.html -->
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h1>Inventario de Medicamentos</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Stock</th>
-        <th>Nivel de Stock</th>
-        <th>Detalles</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for medicamento in medicamentos %}
-        <tr class="{% if medicamento.get_nivel_stock == 'Alto' %}table-success{% elif medicamento.get_nivel_stock == 'Medio' %}table-warning{% else %}table-danger{% endif %}">
-          <td>{{ medicamento.nombre }}</td>
-          <td>{{ medicamento.stock }}</td>
-          <td>{{ medicamento.get_nivel_stock }}</td>
-          <td><a href="{% url 'medicamento_detail' pk=medicamento.pk %}" class="btn btn-primary">Detalles</a></td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <a href="{% url 'medicamento_create' %}" class="btn btn-success">Agregar Medicamento</a>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Inventario de Medicamentos</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Stock</th>
+                            <th>Nivel de Stock</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for medicamento in medicamentos %}
+                            <tr class="{% if medicamento.get_nivel_stock == 'Alto' %}table-success{% elif medicamento.get_nivel_stock == 'Medio' %}table-warning{% else %}table-danger{% endif %}">
+                                <td>{{ medicamento.nombre }}</td>
+                                <td>{{ medicamento.stock }}</td>
+                                <td>{{ medicamento.get_nivel_stock }}</td>
+                                <td><a href="{% url 'medicamento_detail' pk=medicamento.pk %}" class="btn btn-primary">Detalles</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'medicamento_create' %}" class="btn btn-success">Agregar Medicamento</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 

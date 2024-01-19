@@ -1,71 +1,75 @@
-<!-- farmacia/templates/medicamento_form.html -->
 {% extends 'farmacia/base_generic.html' %}
 
 {% block content %}
     <div class="container mt-5">
-        <h1>Agregar/Editar Medicamento</h1>
-        <form method="post" action="" class="row g-3">
-            {% csrf_token %}
-            <div class="col-md-6">
-                <div class="mb-3">
-                    {{ form.sku.label_tag }}
-                    {{ form.sku }}
-                </div>
-                <div class="mb-3">
-                    {{ form.nombre.label_tag }}
-                    {{ form.nombre }}
-                </div>
-                <div class="mb-3">
-                    {{ form.laboratorio.label_tag }}
-                    {{ form.laboratorio }}
-                </div>
-                <div class="mb-3">
-                    {{ form.principio_activo.label_tag }}
-                    {{ form.principio_activo }}
-                </div>
-                <div class="mb-3">
-                    {{ form.accion_terapeutica.label_tag }}
-                    {{ form.accion_terapeutica }}
-                </div>
-                <div class="mb-3">
-                    {{ form.presentacion.label_tag }}
-                    {{ form.presentacion }}
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Agregar/Editar Medicamento</h1>
+                <form method="post" action="" class="row g-3">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form.sku.label_tag }}
+                            {{ form.sku }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.nombre.label_tag }}
+                            {{ form.nombre }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.laboratorio.label_tag }}
+                            {{ form.laboratorio }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.principio_activo.label_tag }}
+                            {{ form.principio_activo }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.accion_terapeutica.label_tag }}
+                            {{ form.accion_terapeutica }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.presentacion.label_tag }}
+                            {{ form.presentacion }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            {{ form.dosis.label_tag }}
+                            {{ form.dosis }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.bioequivalente.label_tag }}
+                            {{ form.bioequivalente }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.stock.label_tag }}
+                            {{ form.stock }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.precio.label_tag }}
+                            {{ form.precio }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.proveedor.label_tag }}
+                            {{ form.proveedor }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.fecha_ingreso.label_tag }}
+                            {{ form.fecha_ingreso }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.fecha_vencimiento.label_tag }}
+                            {{ form.fecha_vencimiento }}
+                        </div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <input class="btn btn-primary" type="submit" value="Guardar">
+                        <a class="btn btn-secondary" href="{% url 'medicamento_list' %}">Volver al listado</a>
+                    </div>
+                </form>
             </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    {{ form.dosis.label_tag }}
-                    {{ form.dosis }}
-                </div>
-                <div class="mb-3">
-                    {{ form.bioequivalente.label_tag }}
-                    {{ form.bioequivalente }}
-                </div>
-                <div class="mb-3">
-                    {{ form.stock.label_tag }}
-                    {{ form.stock }}
-                </div>
-                <div class="mb-3">
-                    {{ form.precio.label_tag }}
-                    {{ form.precio }}
-                </div>
-                <div class="mb-3">
-                    {{ form.proveedor.label_tag }}
-                    {{ form.proveedor }}
-                </div>
-                <div class="mb-3">
-                    {{ form.fecha_ingreso.label_tag }}
-                    {{ form.fecha_ingreso }}
-                </div>
-                <div class="mb-3">
-                    {{ form.fecha_vencimiento.label_tag }}
-                    {{ form.fecha_vencimiento }}
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <input class="btn btn-primary" type="submit" value="Guardar">
-                <a class="btn btn-secondary" href="{% url 'medicamento_list' %}">Volver al listado</a>
-            </div>
-        </form>
+        </div>
     </div>
 {% endblock %}
+

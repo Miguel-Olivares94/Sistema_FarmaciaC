@@ -22,6 +22,18 @@ class Medicamento(models.Model):
     nivel_stock = models.CharField(max_length=255, blank=True, null=True)
     fecha_ingreso = models.DateField()
     fecha_vencimiento = models.DateField()
+
+    
+    
+    def save(self, *args, **kwargs):
+        # Verifica si el campo stock ha cambiado antes de actualizar nivel_stock
+        if self.pk is not None:  # Para asegurar que el objeto ya existe en la base de datos
+            old_instance = Medicamento.objects.get(pk=self.pk)
+            if self.stock != old_instance.stock:
+                self.nivel_stock = self.get_nivel_stock()
+
+        super().save(*args, **kwargs)
+
   
     def calcular_precio_total_vendido(self):
         return sum(detalle.precio_total() for detalle in self.detalleventa_set.all())
@@ -39,16 +51,26 @@ class Medicamento(models.Model):
     def __str__(self):
         return self.nombre
 
+    
 
 
 
 class Venta(models.Model):
+    medicamento = models.ForeignKey(Medicamento, on_delete=models.CASCADE)
     medicamento = models.ForeignKey('Medicamento', on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField(default=0)
     precio = models.PositiveIntegerField()
     fecha = models.DateTimeField(auto_now_add=True)
     vendedor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ventas_realizadas')
 
+
+    def save(self, *args, **kwargs):
+        # Resta la cantidad vendida al stock del medicamento asociado
+        if self.medicamento.stock >= self.cantidad:
+            self.medicamento.stock -= self.cantidad
+            self.medicamento.save()
+
+        super().save(*args, **kwargs)
  
 
 class DetalleVenta(models.Model):

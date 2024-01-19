@@ -3,14 +3,22 @@
 {% block title %}Actualizar Venta - Farmacia Collico{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h2 class="mt-4 mb-4">Actualizar Venta</h2>
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="card">
+      <div class="card-body">
+                <h2 class="card-title mt-4 mb-4 text-center">Actualizar Venta</h2>
 
-    <form method="post" action="{% url 'actualizar_venta' venta.id %}">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Actualizar Venta</button>
-      <a href="{% url 'ventas' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
-  </div>
+                <form method="post" action="{% url 'actualizar_venta' venta.id %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-primary">Actualizar Venta</button>
+                        <a href="{% url 'ventas' %}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+
+

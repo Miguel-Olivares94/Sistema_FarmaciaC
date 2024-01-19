@@ -3,15 +3,27 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h1>Detalle de Venta</h1>
-  
-  <h2>Venta</h2>
-  <p>Medicamento: {{ venta.medicamento.nombre }}</p>
-  <p>Cantidad: {{ venta.cantidad }}</p>
-  <p>Precio Unitario: {{ venta.precio }}</p>
-  <p>Fecha: {{ venta.fecha }}</p>
-  <p>Vendedor: {{ venta.vendedor.username }}</p>
-
-  <!-- Puedes agregar más detalles según tus necesidades -->
-
+  <div class="container mt-5 d-flex align-items-center justify-content-center">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Detalle de Venta</h1>
+        
+        <h2 class="card-title">Venta</h2>
+        <div class="card-text">
+          <p class="mb-2"><strong>Medicamento:</strong> {{ venta.medicamento.nombre }}</p>
+          <p class="mb-2"><strong>Cantidad:</strong> {{ venta.cantidad }}</p>
+          <p class="mb-2"><strong>Precio Unitario:</strong> {{ venta.precio }}</p>
+          <p class="mb-2"><strong>Fecha:</strong> {{ venta.fecha }}</p>
+          <p class="mb-2"><strong>Vendedor:</strong> {{ venta.vendedor.username }}</p>
+        </div>
+        
+        <!-- Sección para mostrar el stock actualizado -->
+        <h2 class="card-title">Stock Actualizado</h2>
+        <div class="card-text">
+          <p><strong>Medicamento:</strong> {{ venta.medicamento.nombre }}</p>
+          <p><strong>Stock Actualizado:</strong> {{ venta.medicamento.stock }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

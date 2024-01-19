@@ -1,14 +1,73 @@
 {% extends 'farmacia/base_generic.html' %}
-
+{% load static %}
 {% block content %}
     <div class="container mt-5">
-        <h1>Bienvenido a Farmacia Collico</h1>
-        <p>Información general:</p>
-        <ul>
-            <li>Total de medicamentos en stock: {{ total_medicamentos }}</li>
-            <li>Cantidad de medicamentos agotados: {{ medicamentos_agotados }}</li>
-            <!-- Puedes agregar más información aquí -->
-        </ul>
-        <a class="btn btn-primary" href="{% url 'medicamento_list' %}">Ver lista de medicamentos</a>
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Bienvenido a Farmacia Collico</h1>
+                <p class="card-text">Información general:</p>
+                <ul class="card-text">
+                    <li>Total de medicamentos en stock: {{ total_medicamentos }}</li>
+                    <li>Cantidad de medicamentos agotados: {{ medicamentos_agotados }}</li>
+                    <!-- Puedes agregar más información aquí -->
+                </ul>
+                <a class="btn btn-primary" href="{% url 'medicamento_list' %}">Ver lista de medicamentos</a>
+            </div>
+        </div>
     </div>
+
+    <div id="video-section" class="d-flex align-items-center justify-content-center mt-5">
+        <div class="card">
+            <div class="card-body text-center">
+                <h2 class="card-title mt-4 mb-4">Video Farmacia Collico</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/uqG1dv60WfA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div><br>
+    
+
+    <div id="gallery-section" class="mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center">Galería de Imágenes</h2>
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{% static 'img/vitaminas.jpg' %}" alt="Imagen 1" class="card-img-top img-fluid">
+                            <div class="card-body">
+                                <p class="card-text text-center">Descripción de la imagen 1.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{% static 'img/beberagua.jpg' %}" alt="Imagen 2" class="card-img-top img-fluid">
+                            <div class="card-body">
+                                <p class="card-text text-center">Descripción de la imagen 2.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{% static 'img/vitaminas.jpg' %}" alt="Imagen 3" class="card-img-top img-fluid">
+                            <div class="card-body">
+                                <p class="card-text text-center">Descripción de la imagen 3.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <!-- Sección de Footer -->
+<div id="footer">
+    <a href="https://www.facebook.com/FarmaciaCollico/photos/a.103747779100973/134886639320420/?type=3" target="_blank"><img src="{% static 'img/facebook.png' %}" alt="Facebook Logo"></a>
+    <a href="https://www.instagram.com/farmaciacollico/?igshid=YmMyMTA2M2Y%3D" target="_blank"><img src="{% static 'img/instagram.png' %}" alt="Instagram Logo"></a>
+    <a href="https://wa.me/56942652487" target="_blank"><img src="{% static 'img/whatsapp.png' %}" alt="WhatsApp Logo"></a>
+    <p>&copy; 2023 Mi Farmacia</p>
+</div>
 {% endblock %}

@@ -4,6 +4,8 @@ from .views import CerrarSesionView
 from .views import ventas,realizar_venta,eliminar_venta, actualizar_venta
 from .views import detalle_venta
 from .views import dashboard
+from . import views 
+
 from .views import (
 
     FarmaciaMainView,
@@ -27,12 +29,16 @@ from .views import (
 
 urlpatterns = [
     
+    
+    
     path('accounts/', include('django.contrib.auth.urls')),
     path('dashboard/', dashboard, name='dashboard'),
     path('farmacia_main/', FarmaciaMainView.as_view(), name='farmacia_main'),
     
     path('ventas/', ventas, name='ventas'),
     path('realizar_venta/', realizar_venta, name='realizar_venta'),
+    path('detalle_venta/<int:venta_id>/', views.detalle_venta, name='detalle_venta'),
+
     path('ventas/eliminar/<int:venta_id>/', eliminar_venta, name='eliminar_venta'),
     path('ventas/actualizar/<int:venta_id>/', actualizar_venta, name='actualizar_venta'),
     path('venta/<int:venta_id>/', detalle_venta, name='detalle_venta'),

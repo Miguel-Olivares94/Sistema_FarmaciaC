@@ -5,6 +5,10 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+CSRF_COOKIE_SECURE = True  # Cambia a False si no usas HTTPS en desarrollo
+CSRF_USE_SESSIONS = True
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -120,8 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

@@ -1,12 +1,17 @@
-<!-- farmacia/templates/farmacia/proveedor_list.html -->
 {% extends 'farmacia/base_generic.html' %}
 
 {% block content %}
-  <h1>Proveedores</h1>
-  <ul class="list-group">
-    {% for proveedor in proveedores %}
-      <li class="list-group-item"><a href="{% url 'proveedor_detail' pk=proveedor.pk %}">{{ proveedor.nombre }}</a></li>
-    {% endfor %}
-  </ul>
-  <a class="btn btn-primary" href="{% url 'proveedor_create' %}">Agregar Proveedor</a>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Proveedores</h1>
+                <ul class="list-group">
+                    {% for proveedor in proveedores %}
+                        <li class="list-group-item"><a href="{% url 'proveedor_detail' pk=proveedor.pk %}">{{ proveedor.nombre }}</a></li>
+                    {% endfor %}
+                </ul>
+                <a class="btn btn-primary" href="{% url 'proveedor_create' %}">Agregar Proveedor</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
